@@ -1,11 +1,18 @@
-const menuToggle = document.querySelector('.menu-toggle');
-const menu = document.querySelector('.menu');
+// Animação suave ao scroll
+const cards = document.querySelectorAll(".flip-card");
 
-menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
 });
 
-window.addEventListener("scroll", function() {
-    const header = document.getElementById("header");
-    header.classList.toggle("scrolled", window.scrollY > 50);
+cards.forEach(card => {
+  card.style.opacity = 0;
+  card.style.transform = "translateY(40px)";
+  card.style.transition = "all 0.6s ease-out";
+  observer.observe(card);
 });
