@@ -1,22 +1,166 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #111;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* HEADER */
+.header {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: #0078D4;
+}
+
+.btn-menu {
+    padding: 8px 16px;
+    background: #0078D4;
+    color: #fff !important;
+    border-radius: 6px;
+}
+
+/* HERO */
 .hero {
-    padding: 140px 20px 120px;
-    text-align: center;
-    position: relative;
+    padding: 150px 0 100px;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 25px;
-    line-height: 1.2;
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
 }
 
-.hero p {
-    margin-bottom: 35px;
-    font-size: 1.1rem;
-    color: #9ca3af;
+.hero-text h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.hero-buttons a {
+    text-decoration: none;
+    margin-right: 15px;
 }
 
 .btn-primary {
-    display: inline-block;
-    margin-top: 10px;
+    background: #0078D4;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 6px;
+}
+
+.btn-secondary {
+    border: 1px solid #0078D4;
+    color: #0078D4;
+    padding: 12px 24px;
+    border-radius: 6px;
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 0;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.portfolio-grid,
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card,
+.servico-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.card:hover,
+.servico-card:hover {
+    transform: translateY(-5px);
+}
+
+/* CTA */
+.cta {
+    background: #0078D4;
+    color: #fff;
+    text-align: center;
+}
+
+.cta .btn-primary {
+    background: #fff;
+    color: #0078D4;
+}
+
+/* FORM */
+.form-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-contato input,
+.form-contato textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
 }
