@@ -1,18 +1,28 @@
-// Animação suave ao scroll
-const cards = document.querySelectorAll(".flip-card");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
+// SCROLL SUAVE MENU
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+    });
 });
 
-cards.forEach(card => {
-  card.style.opacity = 0;
-  card.style.transform = "translateY(40px)";
-  card.style.transition = "all 0.6s ease-out";
-  observer.observe(card);
-});
+// SCROLL REVEAL
+const elements = document.querySelectorAll(".card, .servico-card, .hero-text, .sobre, .cta");
+
+function reveal() {
+    const trigger = window.innerHeight * 0.85;
+
+    elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+
+        if (top < trigger) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", reveal);
+
+// Adiciona classe fade-in automaticamente
+elements.forEach(el => el.classList.add("fade-in"));
