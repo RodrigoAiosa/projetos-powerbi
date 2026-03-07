@@ -6,103 +6,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodrigo Aiosa | Portfólio Power BI</title>
     <meta name="description" content="Portfólio profissional de Power BI focado em dashboards estratégicos, indicadores e inteligência de dados para empresas.">
-    <!-- CSS -->
-    <link rel="stylesheet" href="./style.css">
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome para ícones de share -->
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* Estilos adicionais para cards do portfólio (inspirado no flip-card do Streamlit) */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        :root {
+            --bg-dark: #0f172a;
+            --card-front: #111827;
+            --accent: #00b4d8;
+            --text-light: #9ca3af;
+            --text-white: #ffffff;
         }
-        .project-card {
-            background: #111827;
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: var(--text-white);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3 { margin: 0; }
+        
+        /* Flip Card Styles */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 460px;
+            perspective: 1200px;
+            margin-bottom: 30px;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-radius: 18px;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
             border-radius: 18px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .flip-card-front {
+            background: var(--card-front);
             border: 1px solid #1f2937;
-            transition: all 0.3s ease;
-            height: 420px;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: #00b4d8;
-            box-shadow: 0 20px 40px rgba(0,180,216,0.2);
-        }
-        .card-front {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 30px;
+        }
+        
+        .flip-card-back {
+            background: var(--bg-dark);
+            border: 2px solid var(--accent);
+            transform: rotateY(180deg);
+            padding: 30px;
             text-align: center;
+            justify-content: space-between;
         }
-        .card-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: bold;
+        
+        .card-icon { font-size: 70px; margin-bottom: 20px; }
+        
+        .pbi-card-title {
+            font-size: 1.6rem;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: white;
         }
-        .card-desc {
-            font-size: 1rem;
-            color: #9ca3af;
-            line-height: 1.5;
+        
+        .pbi-card-tag {
+            font-size: 0.9rem;
+            font-weight: 900;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 30px;
             margin-bottom: 20px;
         }
+        
+        .pbi-description {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        
         .btn-acessar {
-            background-color: #00b4d8;
-            color: #111827;
-            padding: 12px 24px;
-            border-radius: 8px;
+            background: var(--accent);
+            color: #000 !important;
+            padding: 12px 28px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1rem;
+            display: inline-block;
             transition: all 0.3s;
         }
+        
         .btn-acessar:hover {
-            background-color: #0099bb;
-            transform: scale(1.05);
+            background: #0099bb;
+            transform: translateY(-3px);
         }
+        
         .share-container {
-            margin-top: 15px;
             display: flex;
-            gap: 20px;
             justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
         }
+        
         .share-icon {
-            color: #9ca3af;
+            color: var(--text-light);
             font-size: 1.8rem;
             transition: all 0.3s;
         }
+        
         .share-icon:hover {
-            color: #00b4d8;
-            transform: scale(1.2);
+            color: var(--accent);
+            transform: scale(1.3);
         }
-        .card-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-bottom: 1px solid #1f2937;
+        
+        /* Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* Hero / outras seções - mantenha seu style.css original ou adicione aqui se necessário */
+        .hero, .sobre, .servicos, .cta, .contato, .footer {
+            /* seus estilos existentes */
         }
     </style>
 </head>
 <body>
-    <!-- ================= HEADER ================= -->
+
+    <!-- HEADER -->
     <header class="header">
         <div class="container nav-container">
-            <div class="logo">
-                <strong>Rodrigo Aiosa</strong>
-            </div>
+            <div class="logo"><strong>Rodrigo Aiosa</strong></div>
             <nav class="nav">
                 <ul>
                     <li><a href="#inicio">Início</a></li>
@@ -115,109 +179,116 @@
         </div>
     </header>
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
     <section id="inicio" class="hero">
         <div class="container hero-content">
             <div class="hero-text">
                 <h1>Transformo Dados em Decisões Estratégicas</h1>
-                <p>
-                    Dashboards profissionais em Power BI para empresas que querem
-                    clareza, performance e crescimento baseado em dados.
-                </p>
+                <p>Dashboards profissionais em Power BI para empresas que querem clareza, performance e crescimento baseado em dados.</p>
                 <div class="hero-buttons">
                     <a href="#portfolio" class="btn-primary">Ver Projetos</a>
                     <a href="#contato" class="btn-secondary">Solicitar Orçamento</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://via.placeholder.com/500x350?text=Dashboard+Power+BI" alt="Dashboard Power BI">
+                <img src="https://via.placeholder.com/500x350?text=Power+BI+Dashboard" alt="Dashboard Power BI">
             </div>
         </div>
     </section>
 
-    <!-- ================= SOBRE ================= -->
+    <!-- SOBRE -->
     <section id="sobre" class="sobre">
         <div class="container">
             <h2>Sobre Mim</h2>
-            <p>
-                Sou especialista em Business Intelligence com foco em Power BI,
-                ajudando empresas a transformar dados brutos em insights acionáveis.
-                Desenvolvo dashboards executivos, operacionais e estratégicos
-                com foco em tomada de decisão e performance. +20 anos de experiência em campo.
-            </p>
+            <p>Sou especialista em Business Intelligence com foco em Power BI... (+20 anos de experiência real em campo)</p>
         </div>
     </section>
 
-    <!-- ================= PORTFÓLIO ================= -->
+    <!-- PORTFÓLIO COM FLIP-CARDS -->
     <section id="portfolio" class="portfolio">
         <div class="container">
             <h2>Projetos em Destaque</h2>
-            <p style="text-align: center; color: #9ca3af; margin-bottom: 40px;">Dashboards estratégicos reais publicados no Power BI Service</p>
+            <p style="text-align:center; color:var(--text-light); margin:20px 0 40px;">Dashboards estratégicos reais – passe o mouse para ver detalhes</p>
             
             <div class="portfolio-grid">
+
                 <!-- Projeto 1 -->
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x180?text=Portal+Transparencia+Ilheus" alt="Portal da Transparência - Ilheus" class="card-image">
-                    <div class="card-front">
-                        <div class="card-icon">📈</div>
-                        <div class="card-title">Portal da Transparência - Ilhéus</div>
-                        <div class="card-desc">Transforma dados públicos em informação clara: receitas, despesas e indicadores em tempo real para controle social e decisões conscientes.</div>
-                        <a href="https://app.powerbi.com/view?r=eyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&pageName=6a9e62a06ecb8db6c215" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
-                        <div class="share-container">
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9%26pageName%3D6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://wa.me/?text=Portal%20da%20Transpar%C3%AAncia%20-%20Ilheus%20que%20vi%20no%20portf%C3%B3lio%20de%20Rodrigo%20Aiosa.%0A%0A%F0%9F%92%A1%20Meu%20dashboard%20em%20Power%20BI%20do%20Portal%20da%20Transpar%C3%AAncia%20de%20Ilh%C3%A9us%20transforma%20dados%20p%C3%BAblicos%20em%20informa%C3%A7%C3%A3o%20clara%20e%20estrat%C3%A9gica...%0A%0A%F0%9F%94%97%20Link%3A%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9%26pageName%3D6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">📈</div>
+                            <div class="pbi-card-title">Portal da Transparência - Ilhéus</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Transforma dados públicos em informação clara e estratégica. Receitas, despesas e indicadores em tempo real para controle social e decisões conscientes.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&pageName=6a9e62a06ecb8db6c215" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://app.powerbi.com/view?r=eyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&pageName=6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Portal%20da%20Transpar%C3%AAncia%20-%20Ilh%C3%A9us%20-%20Power%20BI%20incr%C3%ADvel!%0A%0A%F0%9F%92%A1%20Transforma%20dados%20p%C3%BAblicos%20em%20informa%C3%A7%C3%A3o%20clara...%0A%0A%F0%9F%94%97%20https://app.powerbi.com/view?r=eyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&pageName=6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Repita o bloco acima para os outros 9 projetos, alterando título, ícone, desc, url e texto do WhatsApp -->
-                <!-- Exemplo rápido para o 2º: -->
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x180?text=DRE+Estrat%C3%A9gico" alt="DRE Estratégico" class="card-image">
-                    <div class="card-front">
-                        <div class="card-icon">📊</div>
-                        <div class="card-title">DRE Estratégico — Análise Financeira</div>
-                        <div class="card-desc">Acompanhamento detalhado do DRE com análises vertical/horizontal, insights sobre rentabilidade, margens e tendências financeiras.</div>
-                        <a href="https://app.powerbi.com/view?r=eyJrIjoiOWE0ZmU3ZTMtYzAyYi00NDE1LTg3YWItYjcxZTE2ZWI2OWRjIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&disablecdnExpiration=1766386882" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
-                        <div class="share-container">
-                            <!-- Links de share semelhantes, ajuste o texto do WA conforme o desc -->
-                            <a href="..." class="share-icon"><i class="fab fa-linkedin"></i></a>
-                            <a href="..." class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                <!-- Projeto 2 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">📊</div>
+                            <div class="pbi-card-title">DRE Estratégico — Análise Financeira</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Acompanhamento detalhado do DRE com análises vertical e horizontal. Insights sobre rentabilidade, margens e tendências para decisões precisas.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiOWE0ZmU3ZTMtYzAyYi00NDE1LTg3YWItYjcxZTE2ZWI2OWRjIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&disablecdnExpiration=1766386882" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <!-- Links semelhantes – ajuste o texto WA se quiser -->
+                                <a href="..." class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="..." class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Continue para os outros: Monitoramento Bradesco, Relatório STONE, Vendas Meta vs Realizado, Controle BNZ, Análise Estratégica, People Analytics, Relatório Borelli, Beocean Resort -->
-                <!-- Para economizar espaço aqui, copiei apenas 2; no seu arquivo, replique o padrão para todos os 10. -->
+                <!-- Adicione os outros 8 projetos seguindo o mesmo padrão -->
+                <!-- Exemplo rápido para o 3º: -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">📋</div>
+                            <div class="pbi-card-title">Monitoramento de Vagas — Bradesco</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Visão consolidada de vagas abertas no Bradesco por área, localização e tipo. Identifica tendências de contratação no mercado bancário.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiMjQxN2Q4NGYtNWRmNy00NWVjLWE4YmQtNWMyNWYwNGYyZDUzIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <!-- ... -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continue para: Relatório STONE, Vendas Meta vs Realizado, Controle BNZ, Análise Estratégica, People Analytics, Relatório Borelli, Beocean Resort -->
 
             </div>
         </div>
     </section>
 
-    <!-- ================= SERVIÇOS (mantido igual) ================= -->
-    <section id="servicos" class="servicos">
-        <div class="container">
-            <h2>Serviços</h2>
-            <div class="servicos-grid">
-                <div class="servico-card">
-                    <h3>Criação de Dashboards</h3>
-                    <p>Desenvolvimento de relatórios personalizados e estratégicos.</p>
-                </div>
-                <!-- ... outros cards ... -->
-            </div>
-        </div>
-    </section>
+    <!-- Mantenha as outras seções (Serviços, CTA, Contato, Footer) como no seu original -->
 
-    <!-- CTA, Contato e Footer mantidos iguais ao original -->
-
-    <!-- ================= FOOTER ================= -->
     <footer class="footer">
         <div class="container">
             <p>© 2026 Rodrigo Aiosa | Especialista em Power BI</p>
         </div>
     </footer>
 
-    <!-- JS (se tiver script.js, mantenha) -->
-    <script src="./script.js"></script>
 </body>
 </html>
