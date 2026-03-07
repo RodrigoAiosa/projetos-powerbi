@@ -20,6 +20,7 @@
             --accent: #00b4d8;
             --text-light: #9ca3af;
             --text-white: #ffffff;
+            --border: #1f2937;
         }
         
         body {
@@ -28,30 +29,30 @@
             color: var(--text-white);
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        h1, h2, h3 { margin: 0; }
+        h1, h2 { text-align: center; }
         
-        /* Flip Card Styles */
+        /* Flip Card */
         .flip-card {
             background-color: transparent;
             width: 100%;
-            height: 460px;
+            height: 480px;
             perspective: 1200px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .flip-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            text-align: center;
             transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             transform-style: preserve-3d;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
         
         .flip-card:hover .flip-card-inner {
@@ -66,31 +67,31 @@
             backface-visibility: hidden;
             border-radius: 18px;
             overflow: hidden;
+            padding: 30px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         
         .flip-card-front {
             background: var(--card-front);
-            border: 1px solid #1f2937;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
+            border: 1px solid var(--border);
         }
         
         .flip-card-back {
             background: var(--bg-dark);
             border: 2px solid var(--accent);
             transform: rotateY(180deg);
-            padding: 30px;
-            text-align: center;
             justify-content: space-between;
         }
         
-        .card-icon { font-size: 70px; margin-bottom: 20px; }
+        .card-icon { font-size: 80px; margin-bottom: 25px; }
         
         .pbi-card-title {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 700;
             margin-bottom: 15px;
         }
@@ -98,121 +99,87 @@
         .pbi-card-tag {
             font-size: 0.9rem;
             font-weight: 900;
-            background: rgba(255,255,255,0.15);
-            padding: 6px 16px;
+            background: rgba(255,255,255,0.12);
+            padding: 6px 18px;
             border-radius: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .pbi-description {
             font-size: 1rem;
             color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.55;
+            margin: 0 0 30px;
             flex-grow: 1;
         }
         
         .btn-acessar {
             background: var(--accent);
-            color: #000 !important;
-            padding: 12px 28px;
+            color: #000;
+            padding: 14px 32px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
-            display: inline-block;
+            font-size: 1.1rem;
             transition: all 0.3s;
         }
         
         .btn-acessar:hover {
             background: #0099bb;
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,180,216,0.3);
         }
         
         .share-container {
             display: flex;
-            justify-content: center;
-            gap: 25px;
+            gap: 30px;
             margin-top: 20px;
         }
         
         .share-icon {
             color: var(--text-light);
-            font-size: 1.8rem;
+            font-size: 2rem;
             transition: all 0.3s;
         }
         
         .share-icon:hover {
             color: var(--accent);
-            transform: scale(1.3);
+            transform: scale(1.25);
         }
         
         /* Grid */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 35px;
+            margin: 50px 0;
         }
         
-        /* Hero / outras seções - mantenha seu style.css original ou adicione aqui se necessário */
-        .hero, .sobre, .servicos, .cta, .contato, .footer {
-            /* seus estilos existentes */
+        /* Cabeçalhos da seção */
+        #portfolio h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        #portfolio p.intro {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container nav-container">
-            <div class="logo"><strong>Rodrigo Aiosa</strong></div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#contato" class="btn-menu">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section id="inicio" class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Transformo Dados em Decisões Estratégicas</h1>
-                <p>Dashboards profissionais em Power BI para empresas que querem clareza, performance e crescimento baseado em dados.</p>
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn-primary">Ver Projetos</a>
-                    <a href="#contato" class="btn-secondary">Solicitar Orçamento</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://via.placeholder.com/500x350?text=Power+BI+Dashboard" alt="Dashboard Power BI">
-            </div>
-        </div>
-    </section>
-
-    <!-- SOBRE -->
-    <section id="sobre" class="sobre">
-        <div class="container">
-            <h2>Sobre Mim</h2>
-            <p>Sou especialista em Business Intelligence com foco em Power BI... (+20 anos de experiência real em campo)</p>
-        </div>
-    </section>
-
-    <!-- PORTFÓLIO COM FLIP-CARDS -->
+    <!-- ================= PORTFÓLIO SECTION ================= -->
     <section id="portfolio" class="portfolio">
         <div class="container">
             <h2>Projetos em Destaque</h2>
-            <p style="text-align:center; color:var(--text-light); margin:20px 0 40px;">Dashboards estratégicos reais – passe o mouse para ver detalhes</p>
+            <p class="intro">Dashboards estratégicos reais publicados no Power BI Service<br>Passe o mouse (ou toque e segure em mobile) para ver detalhes</p>
             
             <div class="portfolio-grid">
 
-                <!-- Projeto 1 -->
+                <!-- 1. Portal da Transparência - Ilhéus -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -226,14 +193,14 @@
                             </div>
                             <a href="https://app.powerbi.com/view?r=eyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&pageName=6a9e62a06ecb8db6c215" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
                             <div class="share-container">
-                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://app.powerbi.com/view?r=eyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&pageName=6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://wa.me/?text=Portal%20da%20Transpar%C3%AAncia%20-%20Ilh%C3%A9us%20-%20Power%20BI%20incr%C3%ADvel!%0A%0A%F0%9F%92%A1%20Transforma%20dados%20p%C3%BAblicos%20em%20informa%C3%A7%C3%A3o%20clara...%0A%0A%F0%9F%94%97%20https://app.powerbi.com/view?r=eyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&pageName=6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9%26pageName%3D6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Portal%20da%20Transpar%C3%AAncia%20-%20Ilh%C3%A9us%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Transforma%20dados%20p%C3%BAblicos%20em%20informa%C3%A7%C3%A3o%20clara%20e%20estrat%C3%A9gica...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYTM2ZWFlM2QtOTc2NC00NDQ2LTg2ZTctOGY5Nzc4YTk2YWM1IiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9%26pageName%3D6a9e62a06ecb8db6c215" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projeto 2 -->
+                <!-- 2. DRE Estratégico -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -243,20 +210,18 @@
                         </div>
                         <div class="flip-card-back">
                             <div class="pbi-description">
-                                Acompanhamento detalhado do DRE com análises vertical e horizontal. Insights sobre rentabilidade, margens e tendências para decisões precisas.
+                                Acompanhamento detalhado do DRE com análises vertical e horizontal. Insights sobre rentabilidade, margens e tendências financeiras para decisões precisas.
                             </div>
                             <a href="https://app.powerbi.com/view?r=eyJrIjoiOWE0ZmU3ZTMtYzAyYi00NDE1LTg3YWItYjcxZTE2ZWI2OWRjIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9&disablecdnExpiration=1766386882" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
                             <div class="share-container">
-                                <!-- Links semelhantes – ajuste o texto WA se quiser -->
-                                <a href="..." class="share-icon"><i class="fab fa-linkedin"></i></a>
-                                <a href="..." class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiOWE0ZmU3ZTMtYzAyYi00NDE1LTg3YWItYjcxZTE2ZWI2OWRjIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=DRE%20Estrat%C3%A9gico%20%E2%80%94%20An%C3%A1lise%20Financeira%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Dashboard%20focado%20no%20DRE%20com%20an%C3%A1lises%20vertical%20e%20horizontal...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiOWE0ZmU3ZTMtYzAyYi00NDE1LTg3YWItYjcxZTE2ZWI2OWRjIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Adicione os outros 8 projetos seguindo o mesmo padrão -->
-                <!-- Exemplo rápido para o 3º: -->
+                <!-- 3. Monitoramento de Vagas — Bradesco -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -270,25 +235,165 @@
                             </div>
                             <a href="https://app.powerbi.com/view?r=eyJrIjoiMjQxN2Q4NGYtNWRmNy00NWVjLWE4YmQtNWMyNWYwNGYyZDUzIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
                             <div class="share-container">
-                                <!-- ... -->
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiMjQxN2Q4NGYtNWRmNy00NWVjLWE4YmQtNWMyNWYwNGYyZDUzIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Monitoramento%20de%20Vagas%20%E2%80%94%20Bradesco%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Dashboard%20estrat%C3%A9gico%20para%20acompanhamento%20de%20vagas...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiMjQxN2Q4NGYtNWRmNy00NWVjLWE4YmQtNWMyNWYwNGYyZDUzIiwidCI6IjM2MDZlM2EyLTYyZjUtNDBhYy1hZDIyLTBkNmM4MDk4OTAzMCJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Continue para: Relatório STONE, Vendas Meta vs Realizado, Controle BNZ, Análise Estratégica, People Analytics, Relatório Borelli, Beocean Resort -->
+                <!-- 4. Relatório STONE -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">💳</div>
+                            <div class="pbi-card-title">Relatório STONE</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Monitoramento de faturamento B2B com KPIs como Margem de Contribuição e Ticket Médio. Análise granular por região e evolução mensal.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiMmViN2ZlMWMtY2Q4My00NmNmLTg0NzAtZjEzMzliNzcwMWMyIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiMmViN2ZlMWMtY2Q4My00NmNmLTg0NzAtZjEzMzliNzcwMWMyIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Relat%C3%B3rio%20STONE%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Monitoramento%20de%20faturamento%20B2B%20com%20KPIs%20essenciais...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiMmViN2ZlMWMtY2Q4My00NmNmLTg0NzAtZjEzMzliNzcwMWMyIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Vendas Meta vs Realizado -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">📊</div>
+                            <div class="pbi-card-title">Vendas Meta vs Realizado</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Gestão de recrutamento e seleção: funil de contratação, tempo médio de fechamento e eficiência dos canais para metas corporativas.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiYTg4OTdkZDUtNmIwZS00NGE1LTk2MDktMzc1YjM3ZjViN2Q5IiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYTg4OTdkZDUtNmIwZS00NGE1LTk2MDktMzc1YjM3ZjViN2Q5IiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Vendas%20Meta%20vs%20Realizado%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Funil%20de%20contrata%C3%A7%C3%A3o%20e%20efici%C3%AAncia%20dos%20canais...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYTg4OTdkZDUtNmIwZS00NGE1LTk2MDktMzc1YjM3ZjViN2Q5IiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Controle de Pedidos BNZ -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">📦</div>
+                            <div class="pbi-card-title">Controle de Pedidos BNZ</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Gestão inteligente de estoque: níveis de inventário, giro de produtos e status de pedidos em tempo real para evitar rupturas.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiODE4YmZkNDItNWQ0OC00YmUyLThiZTktOTlmN2E0NWM3NTljIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiODE4YmZkNDItNWQ0OC00YmUyLThiZTktOTlmN2E0NWM3NTljIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Controle%20de%20Pedidos%20BNZ%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Visibilidade%20total%20sobre%20fluxo%20de%20mercadorias...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiODE4YmZkNDItNWQ0OC00YmUyLThiZTktOTlmN2E0NWM3NTljIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Análise Dados Estratégica -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">🎯</div>
+                            <div class="pbi-card-title">Análise Dados Estratégica</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Controle rigoroso de metas e performance de vendas para alta gestão. Planejado vs realizado e tendências de mercado em tempo real.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiM2ZhYjQ5YzItNTliMS00M2QxLWFhMmItN2QzMjVhNThjY2QxIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiM2ZhYjQ5YzItNTliMS00M2QxLWFhMmItN2QzMjVhNThjY2QxIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=An%C3%A1lise%20Dados%20Estrat%C3%A9gica%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Controle%20de%20metas%20e%20performance%20de%20vendas...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiM2ZhYjQ5YzItNTliMS00M2QxLWFhMmItN2QzMjVhNThjY2QxIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. People Analytics (RH) -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">👥</div>
+                            <div class="pbi-card-title">People Analytics (RH)</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Gestão de remuneração variável: controle automático de comissões e bonificações com transparência e precisão nos cálculos.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiYmE2OGE3ODktZTUzMi00YTU2LTlkYmItYzUzY2UzNmJkMjAyIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYmE2OGE3ODktZTUzMi00YTU2LTlkYmItYzUzY2UzNmJkMjAyIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=People%20Analytics%20(RH)%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Controle%20de%20comiss%C3%B5es%20e%20bonifica%C3%A7%C3%B5es%20com%20transpar%C3%AAncia...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYmE2OGE3ODktZTUzMi00YTU2LTlkYmItYzUzY2UzNmJkMjAyIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Gestão de Negócios - Relatório Borelli -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">🚀</div>
+                            <div class="pbi-card-title">Gestão de Negócios - Relatório Borelli</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Eficiência fabril: ciclo produtivo completo, produtividade, desperdícios e ocupação de capacidade para otimização industrial.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiYzNhNDFkNzEtZmVkNy00ODZkLTgyZDYtMWIzMDQ3YWU2ZjFiIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYzNhNDFkNzEtZmVkNy00ODZkLTgyZDYtMWIzMDQ3YWU2ZjFiIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Gest%C3%A3o%20de%20Neg%C3%B3cios%20-%20Relat%C3%B3rio%20Borelli%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Efici%C3%AAncia%20fabril%20e%20controle%20de%20produ%C3%A7%C3%A3o...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiYzNhNDFkNzEtZmVkNy00ODZkLTgyZDYtMWIzMDQ3YWU2ZjFiIiwidCI6ImVlMmMzMDc0LTIyZDQtNGI3MC05MTdjLTJiYmFhZjUwZGQ4MyJ9" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Dashboard Financeiro — Beocean Resort -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">🏖️</div>
+                            <div class="pbi-card-title">Dashboard Financeiro — Beocean Resort</div>
+                            <div class="pbi-card-tag">PASSE O MOUSE ↻</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="pbi-description">
+                                Controle financeiro integral para hotelaria: fluxo de caixa, receitas por categoria e despesas operacionais para maximizar rentabilidade.
+                            </div>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiY2VkZmU1MDMtNTgwZS00NTJmLWFhOTktYzM0YzMwZDE3OTE4IiwidCI6IjdjNTYzNjMxLTcyZGMtNDY1Ny05MTRkLWIyM2M5ZTI5OGVlMSJ9&pageName=ae6d1828240b25f04e49" target="_blank" class="btn-acessar">Abrir Dashboard ↗️</a>
+                            <div class="share-container">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiY2VkZmU1MDMtNTgwZS00NTJmLWFhOTktYzM0YzMwZDE3OTE4IiwidCI6IjdjNTYzNjMxLTcyZGMtNDY1Ny05MTRkLWIyM2M5ZTI5OGVlMSJ9%26pageName%3Dae6d1828240b25f04e49" target="_blank" class="share-icon"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://wa.me/?text=Dashboard%20Financeiro%20%E2%80%94%20Beocean%20Resort%20-%20vi%20no%20portf%C3%B3lio!%0A%0A%F0%9F%92%A1%20Controle%20financeiro%20para%20hotelaria%3A%20fluxo%20de%20caixa...%0A%0A%F0%9F%94%97%20https%3A%2F%2Fapp.powerbi.com%2Fview%3Fr%3DeyJrIjoiY2VkZmU1MDMtNTgwZS00NTJmLWFhOTktYzM0YzMwZDE3OTE4IiwidCI6IjdjNTYzNjMxLTcyZGMtNDY1Ny05MTRkLWIyM2M5ZTI5OGVlMSJ9%26pageName%3Dae6d1828240b25f04e49" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Mantenha as outras seções (Serviços, CTA, Contato, Footer) como no seu original -->
-
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 Rodrigo Aiosa | Especialista em Power BI</p>
-        </div>
-    </footer>
+    <!-- Adicione aqui as outras seções do seu site (header, hero, sobre, serviços, contato, footer) -->
 
 </body>
 </html>
